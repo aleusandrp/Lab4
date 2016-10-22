@@ -12,7 +12,7 @@
     	$count = $_GET['count'];
     	for ($i=0; $i < $count; $i++) { 
     	 	for ($j=0; $j < $count; $j++) { 
-    	 		$mas[$i][$j]=rand(0, 9);
+    	 		$mas[$i][$j]=rand(1, 9);
     	 	}
     	 }
     	echo "Матрица"."<br>-----------<br>";
@@ -55,9 +55,49 @@
 		  return $det;
 		}
 
-		echo "-----------<br>"."Определитель: " . determ($mas, $count);
+		echo "-----------<br>"."Определитель: " . determ($mas, $count)."<br>";
+
+		function obratka($matrix){ 
+		    $a = $matrix; 
+		    $e = array(); 
+		    $count = count($a); 
+		    for($i=0;$i<$count;$i++) 
+		        for($j=0;$j<$count;$j++) 
+		            $e[$i][$j]=($i==$j)? 1 : 0; 
+		             
+		    for($i=0;$i<$count;$i++){ 
+		        $tmp = $a[$i][$i]; 
+		        for($j=$count-1;$j>=0;$j--){ 
+		            $e[$i][$j]/=$tmp; 
+		            $a[$i][$j]/=$tmp; 
+		        } 
+	         
+	        for($j=0;$j<$count;$j++){ 
+	            if($j!=$i){ 
+	                $tmp = $a[$j][$i]; 
+	                for($k=$count-1;$k>=0;$k--){ 
+	                    $e[$j][$k]-=$e[$i][$k]*$tmp; 
+	                    $a[$j][$k]-=$a[$i][$k]*$tmp; 
+	                } 
+	            } 
+	        } 
+	    } 
+	     
+	    for($i=0;$i<$count;$i++) 
+	     for($j=0;$j<$count;$j++) 
+	       $a[$i][$j]=$e[$i][$j]; 
+	        
+	        echo "Обратная матрица"."<br>-----------<br>";
+			for ($i=0; $i < $count; $i++) 
+			{ 
+		 		for ($j=0; $j < $count; $j++) {
+					echo number_format($a[$i][$j], 2, '.', '')."|";
+				}
+				echo "<br>";
+			}   
+			} 
+			obratka($mas);
 		}
-		 		 
 	?>
 
 </body>
