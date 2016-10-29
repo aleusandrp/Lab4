@@ -2,6 +2,9 @@
 	if (isset($_GET['count'])) 
 	{
     	$count = $_GET['count'];
+		if($count == ''){
+			$count = rand(2,8);
+		}
     	for ($i=0; $i < $count; $i++) { 
     	 	for ($j=0; $j < $count; $j++) { 
     	 		$mas[$i][$j]=rand(1, 9);
