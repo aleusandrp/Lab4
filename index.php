@@ -7,7 +7,7 @@
 </head>
 <body>
 <form action="table.php" method="GET">
-	<input type="text" name="count">
+	<input type="text" placeholder="Введите размер марицы" name="count">
 	<input type="submit" value="Отправить">
 </form>
 </body>
