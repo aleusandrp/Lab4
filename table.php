@@ -126,7 +126,7 @@
 		foreach($mas as $k=>$v){
 		$line= "";
 		foreach($v as $value){
-		$line.=$value."\t";
+		$line.=$value." ";
 		}
 		fputs($f,$line."\n");
 		}
